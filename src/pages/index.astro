@@ -227,19 +227,48 @@ const projects = [
       const progress = document.querySelector('[data-progress]');
 
       if (video && hero && !reducedMotion) {
-        video.addEventListener('loadedmetadata', () => {
+        let targetTime = 0;
+        let easedTime = 0;
+        let animationFrame = 0;
+
+        const paintVideoFrame = () => {
+          const difference = targetTime - easedTime;
+          easedTime += difference * 0.16;
+
+          if (Math.abs(video.currentTime - easedTime) > 0.018 && video.readyState >= 2) {
+            video.currentTime = easedTime;
+          }
+
+          animationFrame = requestAnimationFrame(paintVideoFrame);
+        };
+
+        const initializeVideoScrub = async () => {
           video.pause();
+          try {
+            await video.play();
+            video.pause();
+            video.currentTime = 0;
+          } catch {
+            video.currentTime = 0;
+          }
+
           ScrollTrigger.create({
             trigger: hero,
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.35,
+            scrub: true,
             onUpdate: ({ progress: p }) => {
-              if (Number.isFinite(video.duration)) video.currentTime = p * Math.max(0, video.duration - 0.05);
+              targetTime = p * Math.max(0, video.duration - 0.05);
               if (progress) progress.style.transform = `scaleY(${p})`;
             },
           });
-        });
+
+          cancelAnimationFrame(animationFrame);
+          animationFrame = requestAnimationFrame(paintVideoFrame);
+        };
+
+        if (video.readyState >= 2) initializeVideoScrub();
+        else video.addEventListener('loadeddata', initializeVideoScrub, { once: true });
       }
 
       gsap.utils.toArray('[data-detail]').forEach((detail, index) => {
