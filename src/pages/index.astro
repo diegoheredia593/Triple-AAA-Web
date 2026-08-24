@@ -1,0 +1,311 @@
+---
+import '../styles/global.css';
+
+const services = [
+  { number: '01', title: 'Uniformes corporativos', copy: 'Prendas que identifican a tu equipo y responden al ritmo real de su trabajo.', image: '/work/uniformes.jpg', tag: 'Ejecutivo · industrial · deportivo' },
+  { number: '02', title: 'Personalización textil', copy: 'Bordado, sublimación y estampación con acabados pensados para durar.', image: '/work/personalizacion.jpg', tag: 'Diseño · técnica · detalle' },
+  { number: '03', title: 'Souvenirs & packs', copy: 'Objetos útiles y packs corporativos que mantienen tu marca presente.', image: '/work/pack.jpg', tag: 'Eventos · clientes · equipos' },
+];
+
+const projects = [
+  { image: '/work/polo.jpg', eyebrow: 'Uniformes', title: 'Identidad que se lleva puesta' },
+  { image: '/work/taza.jpg', eyebrow: 'Souvenirs', title: 'Tu marca en los pequeños momentos' },
+  { image: '/work/camiseta.jpg', eyebrow: 'Personalización', title: 'Una idea convertida en producto' },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Uniformes, prendas personalizadas y souvenirs corporativos para empresas. El Exclusivo convierte tu identidad en productos que tu equipo quiere usar." />
+    <meta name="theme-color" content="#f5f3ef" />
+    <title>El Exclusivo — Tu marca toma forma</title>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#inicio" aria-label="El Exclusivo, inicio">
+        <img src="/logo-el-exclusivo.jpg" alt="El Exclusivo" width="150" height="150" />
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#soluciones">Soluciones</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#proyectos">Proyectos</a>
+      </nav>
+      <button class="header-cta" type="button" data-open-brief>Cuéntanos tu idea <span>↗</span></button>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" data-hero>
+        <div class="hero-sticky">
+          <div class="textile-grid" aria-hidden="true"></div>
+          <div class="hero-copy" data-hero-copy>
+            <p class="eyebrow"><span></span> Uniformes & souvenirs corporativos</p>
+            <h1>Tu marca<br /><em>toma forma.</em></h1>
+            <p class="hero-lede">Diseñamos y personalizamos prendas y objetos que representan a tu empresa en el mundo real.</p>
+            <div class="hero-actions">
+              <button class="button button-primary" type="button" data-open-brief>Empezar un proyecto <span>↗</span></button>
+              <a class="button button-ghost" href="#soluciones">Descubrir <span>↓</span></a>
+            </div>
+          </div>
+
+          <div class="hero-product" data-product>
+            <div class="product-halo"></div>
+            <video id="hero-video" muted playsinline preload="auto" poster="/hero-master.png" aria-label="Polo corporativo personalizado rotando">
+              <source src="/hero-turn.mp4" type="video/mp4" />
+            </video>
+            <img class="hero-fallback" src="/hero-master.png" alt="Polo azul corporativo personalizado por El Exclusivo" />
+          </div>
+
+          <div class="hero-detail detail-one" data-detail>
+            <span>01</span><strong>Prenda</strong><small>La base correcta para cada uso</small>
+          </div>
+          <div class="hero-detail detail-two" data-detail>
+            <span>02</span><strong>Identidad</strong><small>Tu marca aplicada con precisión</small>
+          </div>
+          <div class="hero-detail detail-three" data-detail>
+            <span>03</span><strong>Detalle</strong><small>Acabados hechos para durar</small>
+          </div>
+
+          <div class="scroll-cue"><span></span> Desliza para transformar</div>
+          <div class="hero-progress" aria-hidden="true"><i data-progress></i></div>
+        </div>
+      </section>
+
+      <section class="manifesto section-shell">
+        <p class="section-index">[ 01 — LO QUE HACEMOS ]</p>
+        <h2>No ponemos un logo sobre cualquier producto. <span>Encontramos la forma adecuada de representar tu empresa.</span></h2>
+        <div class="manifesto-note">
+          <span class="stitch"></span>
+          <p>Desde una pequeña producción para un evento hasta la dotación completa de un equipo.</p>
+        </div>
+      </section>
+
+      <section class="services" id="soluciones">
+        {services.map((service) => (
+          <article class="service-card">
+            <div class="service-copy">
+              <span class="service-number">{service.number}</span>
+              <p class="eyebrow">{service.tag}</p>
+              <h3>{service.title}</h3>
+              <p>{service.copy}</p>
+              <button type="button" data-open-brief data-interest={service.title}>Quiero algo así <span>↗</span></button>
+            </div>
+            <div class="service-image">
+              <img src={service.image} alt={service.title} loading="lazy" />
+              <div class="image-line"></div>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="process section-shell" id="proceso">
+        <div class="process-heading">
+          <p class="section-index">[ 02 — DEL CONCEPTO A LA ENTREGA ]</p>
+          <h2>Un proceso claro.<br /><em>Un resultado muy tuyo.</em></h2>
+        </div>
+        <div class="process-track">
+          <div class="process-line"><i></i></div>
+          <article><span>01</span><h3>Nos cuentas</h3><p>Entendemos tu empresa, el uso, la cantidad y el momento.</p></article>
+          <article><span>02</span><h3>Te asesoramos</h3><p>Elegimos prendas, artículos y técnicas que tengan sentido.</p></article>
+          <article><span>03</span><h3>Diseñamos</h3><p>Convertimos tu identidad en una propuesta lista para aprobar.</p></article>
+          <article><span>04</span><h3>Producimos</h3><p>Cuidamos cada detalle y coordinamos la entrega de tu pedido.</p></article>
+        </div>
+      </section>
+
+      <section class="projects" id="proyectos">
+        <div class="projects-head section-shell">
+          <div>
+            <p class="section-index">[ 03 — TRABAJOS REALES ]</p>
+            <h2>Ideas que ya<br /><em>tomaron forma.</em></h2>
+          </div>
+          <p>Cada empresa es distinta. Por eso cada solución también debería serlo.</p>
+        </div>
+        <div class="project-grid">
+          {projects.map((project, index) => (
+            <article class:list={['project', { 'project-featured': index === 0 }]}>
+              <img src={project.image} alt={project.title} loading="lazy" />
+              <div class="project-caption"><span>{project.eyebrow}</span><h3>{project.title}</h3></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-texture"></div>
+        <p class="section-index">[ HABLEMOS DE TU PROYECTO ]</p>
+        <h2>¿Qué quieres crear<br />para <em>tu empresa?</em></h2>
+        <p>Responde cinco preguntas. Nosotros continuamos la conversación por WhatsApp.</p>
+        <button class="button button-light" type="button" data-open-brief>Cuéntanos tu idea <span>↗</span></button>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-brand" href="#inicio"><img src="/logo-el-exclusivo.jpg" alt="El Exclusivo" width="180" height="180" /></a>
+      <p>Uniformes · Personalización · Souvenirs</p>
+      <a href="#inicio">Volver arriba ↑</a>
+      <small>© {new Date().getFullYear()} El Exclusivo. Creatividad que viene de lo alto.</small>
+    </footer>
+
+    <dialog class="brief" data-brief>
+      <form method="dialog" class="brief-shell" data-brief-form>
+        <button class="brief-close" value="cancel" aria-label="Cerrar">×</button>
+        <div class="brief-top">
+          <p class="eyebrow"><span></span> Cuéntanos tu idea</p>
+          <p class="brief-step">Paso <b data-step-label>1</b> de 5</p>
+        </div>
+        <div class="brief-progress"><i data-brief-progress></i></div>
+
+        <fieldset class="brief-panel is-active" data-step="1">
+          <legend>¿Qué necesitas crear?</legend>
+          <div class="choice-grid">
+            {['Uniformes corporativos', 'Camisetas personalizadas', 'Souvenirs o packs', 'Artículos promocionales', 'Necesito asesoría'].map((item) => (
+              <label><input type="radio" name="producto" value={item} required /><span>{item}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="brief-panel" data-step="2">
+          <legend>¿Para qué tipo de empresa o actividad?</legend>
+          <div class="choice-grid">
+            {['Corporativa / oficina', 'Industrial', 'Gastronomía', 'Salud', 'Deporte', 'Evento o campaña', 'Otro sector'].map((item) => (
+              <label><input type="radio" name="sector" value={item} required /><span>{item}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="brief-panel" data-step="3">
+          <legend>¿Cuántas unidades aproximadamente?</legend>
+          <div class="choice-grid">
+            {['Menos de 20', '20–50', '51–100', 'Más de 100', 'Todavía no lo sé'].map((item) => (
+              <label><input type="radio" name="cantidad" value={item} required /><span>{item}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="brief-panel" data-step="4">
+          <legend>¿Para cuándo lo necesitas?</legend>
+          <div class="choice-grid">
+            {['Lo antes posible', 'En 2–4 semanas', 'En 1–2 meses', 'Más adelante', 'Necesito orientación'].map((item) => (
+              <label><input type="radio" name="fecha" value={item} required /><span>{item}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="brief-panel" data-step="5">
+          <legend>¿Ya tienes logo o diseño?</legend>
+          <div class="choice-grid">
+            {['Sí, está listo', 'Tengo una idea inicial', 'Necesito ayuda con el diseño'].map((item) => (
+              <label><input type="radio" name="diseno" value={item} required /><span>{item}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div class="brief-actions">
+          <button type="button" class="brief-back" data-back disabled>← Atrás</button>
+          <button type="button" class="button button-primary brief-next" data-next>Continuar →</button>
+          <button type="submit" class="button button-primary brief-submit" data-submit>Enviar por WhatsApp ↗</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const video = document.querySelector('#hero-video');
+      const hero = document.querySelector('[data-hero]');
+      const progress = document.querySelector('[data-progress]');
+
+      if (video && hero && !reducedMotion) {
+        video.addEventListener('loadedmetadata', () => {
+          video.pause();
+          ScrollTrigger.create({
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.35,
+            onUpdate: ({ progress: p }) => {
+              if (Number.isFinite(video.duration)) video.currentTime = p * Math.max(0, video.duration - 0.05);
+              if (progress) progress.style.transform = `scaleY(${p})`;
+            },
+          });
+        });
+      }
+
+      gsap.utils.toArray('[data-detail]').forEach((detail, index) => {
+        gsap.fromTo(detail, { autoAlpha: 0, y: 24 }, {
+          autoAlpha: 1, y: 0,
+          scrollTrigger: { trigger: hero, start: `${28 + index * 18}% top`, end: `${42 + index * 18}% top`, scrub: true }
+        });
+      });
+
+      gsap.from('.manifesto h2', { y: 70, opacity: 0, duration: 1, scrollTrigger: { trigger: '.manifesto', start: 'top 72%' } });
+      gsap.utils.toArray('.service-card').forEach((card) => gsap.from(card, { y: 90, opacity: 0, duration: 1, scrollTrigger: { trigger: card, start: 'top 82%' } }));
+      gsap.to('.process-line i', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.process-track', start: 'top 75%', end: 'bottom 70%', scrub: true } });
+
+      const dialog = document.querySelector('[data-brief]');
+      const form = document.querySelector('[data-brief-form]');
+      const panels = [...document.querySelectorAll('[data-step]')];
+      const next = document.querySelector('[data-next]');
+      const back = document.querySelector('[data-back]');
+      const submit = document.querySelector('[data-submit]');
+      const stepLabel = document.querySelector('[data-step-label]');
+      const briefProgress = document.querySelector('[data-brief-progress]');
+      let step = 1;
+
+      const renderStep = () => {
+        panels.forEach((panel) => panel.classList.toggle('is-active', Number(panel.dataset.step) === step));
+        stepLabel.textContent = String(step);
+        briefProgress.style.transform = `scaleX(${step / 5})`;
+        back.disabled = step === 1;
+        next.style.display = step === 5 ? 'none' : 'inline-flex';
+        submit.style.display = step === 5 ? 'inline-flex' : 'none';
+      };
+
+      document.querySelectorAll('[data-open-brief]').forEach((button) => button.addEventListener('click', () => {
+        const interest = button.dataset.interest;
+        if (interest) {
+          const input = form.querySelector(`input[value="${interest}"]`);
+          if (input) input.checked = true;
+        }
+        dialog.showModal();
+        document.body.classList.add('modal-open');
+      }));
+
+      dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
+      next.addEventListener('click', () => {
+        const current = panels[step - 1];
+        const checked = current.querySelector('input:checked');
+        if (!checked) { current.classList.add('needs-answer'); setTimeout(() => current.classList.remove('needs-answer'), 500); return; }
+        step = Math.min(5, step + 1); renderStep();
+      });
+      back.addEventListener('click', () => { step = Math.max(1, step - 1); renderStep(); });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const message = [
+          'Hola, quiero solicitar asesoría para un proyecto.',
+          '',
+          `• Producto: ${data.get('producto')}`,
+          `• Sector: ${data.get('sector')}`,
+          `• Cantidad: ${data.get('cantidad')}`,
+          `• Fecha: ${data.get('fecha')}`,
+          `• Logo o diseño: ${data.get('diseno')}`,
+          '',
+          '¿Podrían ayudarme con una propuesta?'
+        ].join('\n');
+        const WHATSAPP_NUMBER = '';
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+
+      renderStep();
+    </script>
+  </body>
+</html>
