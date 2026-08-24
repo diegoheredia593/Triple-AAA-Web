@@ -211,12 +211,17 @@ const projects = [
     </dialog>
 
     <script>
+      // @ts-nocheck
       import gsap from 'gsap';
       import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
       gsap.registerPlugin(ScrollTrigger);
 
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const header = document.querySelector('[data-header]');
+      const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
       const video = document.querySelector('#hero-video');
       const hero = document.querySelector('[data-hero]');
       const progress = document.querySelector('[data-progress]');
